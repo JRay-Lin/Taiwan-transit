@@ -22,8 +22,14 @@ Use `--json` for structured output:
 
 ## TRA Station Cache
 
-TRA station names and station codes are read from `skills/taiwan-transit/data/tra_stations.json`.
+TRA station names and station codes are read from `skills/taiwan-transit/scripts/data/tra_stations.json`.
 Normal `tra` queries do not fetch or update station data. Run `taiwan-transit update` when the station cache is missing or stale.
+
+`update` refreshes the cache from the government open-data CSV for dataset 33425:
+
+```text
+https://quality.data.gov.tw/dq_download_csv.php?nid=33425&md5_url=82a54f59aa0559d7c4ef0aadb1ec1510
+```
 
 ## Tests
 

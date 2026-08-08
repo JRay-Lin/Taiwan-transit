@@ -35,7 +35,7 @@ For TRA cache rules, CSRF/session workflow, and result parsing, read `references
 
 ## Cache Rule
 
-TRA station names and codes are static cached data for normal queries. Do not fetch or infer TRA stations during `tra` lookup. If a station is missing or stale, run `taiwan-transit update`, then retry the query.
+TRA station names and codes are static cached data for normal queries. Do not fetch or infer TRA stations during `tra` lookup. If a station is missing or stale, run `taiwan-transit update` to refresh from the government open-data CSV, then retry the query.
 
 ## Common Mistakes
 

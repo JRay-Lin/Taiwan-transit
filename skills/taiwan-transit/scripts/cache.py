@@ -1,37 +1,24 @@
 from __future__ import annotations
 
+import csv
 import json
-from html.parser import HTMLParser
 from pathlib import Path
+from io import StringIO
 from typing import Callable
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 
 
 TRA_QUERY_URL = "https://www.railway.gov.tw/tra-tip-web/tip/tip001/tip112/querybytime"
+TRA_STATION_CSV_URL = (
+    "https://quality.data.gov.tw/dq_download_csv.php?"
+    "nid=33425&md5_url=82a54f59aa0559d7c4ef0aadb1ec1510"
+)
 DEFAULT_TRA_STATION_CACHE = Path(__file__).with_name("data") / "tra_stations.json"
 
 
 class TransitError(RuntimeError):
     """Raised for user-facing CLI errors."""
-
-
-class StationButtonParser(HTMLParser):
-    def __init__(self) -> None:
-        super().__init__()
-        self.stations: list[dict[str, str]] = []
-
-    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        if tag.lower() != "button":
-            return
-        attr_map = {key: value or "" for key, value in attrs}
-        classes = set(attr_map.get("class", "").split())
-        title = attr_map.get("title", "")
-        if "tipStation" not in classes or "-" not in title:
-            return
-        code, name = title.split("-", 1)
-        if code.isdigit() and name:
-            self.stations.append({"code": code, "name": name, "aliases": _aliases_for(name)})
 
 
 def _aliases_for(name: str) -> list[str]:
@@ -41,6 +28,18 @@ def _aliases_for(name: str) -> list[str]:
     if "台" in name:
         aliases.append(name.replace("台", "臺"))
     return aliases
+
+
+def _dedupe(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    deduped: list[str] = []
+    for value in values:
+        normalized = value.strip()
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        deduped.append(normalized)
+    return deduped
 
 
 def _open(opener: Callable | None, request: Request):
@@ -76,18 +75,37 @@ def load_tra_stations(cache_path: str | Path | None = None) -> list[dict[str, st
     return stations
 
 
-def parse_tra_station_buttons(html: str) -> list[dict[str, str]]:
-    parser = StationButtonParser()
-    parser.feed(html)
+def parse_tra_station_csv(csv_text: str) -> list[dict[str, str]]:
+    reader = csv.DictReader(StringIO(csv_text.lstrip("\ufeff")))
     seen: set[tuple[str, str]] = set()
     stations: list[dict[str, str]] = []
-    for station in parser.stations:
-        key = (station["code"], station["name"])
+    for row in reader:
+        code = _first_present(row, ["stationCode", "Station_Code4", "Station_Code3"])
+        names = _dedupe(
+            [
+                _first_present(row, ["name", "網站中文站名"]),
+                _first_present(row, ["stationName", "Station_Name"]),
+            ]
+        )
+        if not code or not names:
+            continue
+        name = names[0]
+        key = (code, name)
         if key in seen:
             continue
         seen.add(key)
-        stations.append(station)
+        aliases = _dedupe([alias for alternate in names for alias in [alternate, *_aliases_for(alternate)]])
+        aliases = [alias for alias in aliases if alias != name]
+        stations.append({"code": code, "name": name, "aliases": aliases})
     return stations
+
+
+def _first_present(row: dict[str, str | None], field_names: list[str]) -> str:
+    for field_name in field_names:
+        value = row.get(field_name)
+        if value and value.strip():
+            return value.strip()
+    return ""
 
 
 def update_tra_station_cache(
@@ -95,12 +113,12 @@ def update_tra_station_cache(
     opener: Callable | None = None,
     cache_path: str | Path | None = None,
 ) -> list[dict[str, str]]:
-    request = Request(TRA_QUERY_URL, method="GET")
+    request = Request(TRA_STATION_CSV_URL, method="GET")
     with _open(opener, request) as response:
-        html = response.read().decode("utf-8", errors="replace")
-    stations = parse_tra_station_buttons(html)
+        csv_text = response.read().decode("utf-8-sig", errors="replace")
+    stations = parse_tra_station_csv(csv_text)
     if not stations:
-        raise TransitError("官方台鐵頁面沒有解析到車站資料")
+        raise TransitError("政府公開資料 CSV 沒有解析到台鐵車站資料")
     path = Path(cache_path) if cache_path is not None else DEFAULT_TRA_STATION_CACHE
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(stations, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")

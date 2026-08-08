@@ -4,11 +4,21 @@ import argparse
 import json
 import sys
 from datetime import datetime
+from pathlib import Path
 from typing import TextIO
 
-from .cache import TransitError, update_tra_station_cache
+from .cache import (
+    DEFAULT_TRA_STATION_CACHE,
+    TRA_STATION_CSV_URL,
+    TransitError,
+    update_tra_station_cache,
+)
 from .hsr import query_timetable as query_hsr_timetable
 from .tra import query_timetable as query_tra_timetable
+
+
+def load_default_cache_path() -> Path:
+    return DEFAULT_TRA_STATION_CACHE
 
 
 def main(

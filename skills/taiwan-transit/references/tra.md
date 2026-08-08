@@ -11,9 +11,17 @@ Use `taiwan-transit tra` for Taiwan Railway timetable lookup.
 
 ## Station Cache
 
-TRA station names and codes are read from `skills/taiwan-transit/data/tra_stations.json` by default. Normal timetable queries must resolve stations from this cache before making any HTTP request.
+TRA station names and codes are read from `skills/taiwan-transit/scripts/data/tra_stations.json` by default. Normal timetable queries must resolve stations from this cache before making any HTTP request.
 
-Only `taiwan-transit update` fetches the official form and rewrites the station cache. If a station is missing, run update instead of parsing live station buttons during query.
+Only `taiwan-transit update` fetches the government open-data station CSV and rewrites the station cache. If a station is missing, run update instead of parsing live station buttons during query.
+
+Station cache update source:
+
+```text
+https://quality.data.gov.tw/dq_download_csv.php?nid=33425&md5_url=82a54f59aa0559d7c4ef0aadb1ec1510
+```
+
+Expected station CSV fields include `stationCode`, `stationName`, and `name`. Use `name` as the cache station name, with `stationName` as a fallback/alias.
 
 ## Query Workflow
 

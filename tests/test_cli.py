@@ -54,6 +54,10 @@ class FakeOpener:
                 forms.append(parse_qs(data.decode("utf-8")))
         return forms
 
+    @property
+    def urls(self):
+        return [request.full_url for request in self.requests]
+
 
 class FailingOpener:
     def __call__(self, request):
@@ -67,17 +71,22 @@ def write_tra_cache(directory, stations):
 
 
 class TaiwanTransitCliTests(unittest.TestCase):
-    def test_update_writes_tra_station_cache_from_official_form(self):
+    def test_default_tra_cache_lives_under_scripts_data(self):
+        expected = SKILL_ROOT / "scripts" / "data" / "tra_stations.json"
+
+        self.assertEqual(cli.load_default_cache_path(), expected)
+        self.assertTrue(expected.exists())
+
+    def test_update_writes_tra_station_cache_from_government_csv(self):
         with tempfile.TemporaryDirectory() as tmpdir:
             cache_path = Path(tmpdir) / "tra_stations.json"
-            html = """
-            <html>
-              <button class="btn tipStation" title="1194-六家">六家</button>
-              <button class="btn tipStation" title="1170-新豐">新豐</button>
-              <button class="btn tipStation" title="1000-臺北">臺北</button>
-            </html>
-            """
-            opener = FakeOpener([FakeResponse(html)])
+            csv_body = (
+                "\ufeffstationCode,stationName,stationEName,name,ename\n"
+                "1194,六家,Liujia,六家,Liujia\n"
+                "1170,新豐,Xinfeng,新豐,Xinfeng\n"
+                "1000,臺北,Taipei,臺北,Taipei\n"
+            )
+            opener = FakeOpener([FakeResponse(csv_body)])
             out = io.StringIO()
 
             exit_code = cli.main(
@@ -88,6 +97,7 @@ class TaiwanTransitCliTests(unittest.TestCase):
 
             self.assertEqual(exit_code, 0)
             self.assertEqual(opener.request_methods, ["GET"])
+            self.assertEqual(opener.urls, [cli.TRA_STATION_CSV_URL])
             cached = json.loads(cache_path.read_text(encoding="utf-8"))
             self.assertEqual(
                 cached,
