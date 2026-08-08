@@ -1,1 +1,32 @@
-# Taiwan-transit
+# Taiwan Transit
+
+Command-line timetable lookup for Taiwan High Speed Rail (THSR) and Taiwan Railway (TRA).
+
+## Usage
+
+Run from the repository root:
+
+```bash
+./skills/taiwan-transit/scripts/taiwan-transit hsr --from 台北 --to 台中 --date 2026/08/08 --time 08:00
+./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐 --date 2026/08/08 --start-time 06:00 --end-time 09:00
+./skills/taiwan-transit/scripts/taiwan-transit update
+```
+
+Use `--json` for structured output:
+
+```bash
+./skills/taiwan-transit/scripts/taiwan-transit hsr --from 台北 --to 台中 --date 2026/08/08 --time 08:00 --json
+```
+
+`cd skills/taiwan-transit && python3 -m scripts ...` works as an alternate entry point.
+
+## TRA Station Cache
+
+TRA station names and station codes are read from `skills/taiwan-transit/data/tra_stations.json`.
+Normal `tra` queries do not fetch or update station data. Run `taiwan-transit update` when the station cache is missing or stale.
+
+## Tests
+
+```bash
+python3 -m unittest tests.test_cli -v
+```

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Taiwan Transit"
+  short_description: "Query Taiwan THSR and TRA timetables"
+  default_prompt: "查詢台灣高鐵或台鐵時刻表"
