@@ -1,12 +1,52 @@
 [
   {
-    "code": "1194",
-    "name": "六家",
+    "code": "0900",
+    "name": "基隆",
     "aliases": []
   },
   {
-    "code": "1170",
-    "name": "新豐",
+    "code": "0910",
+    "name": "三坑",
+    "aliases": []
+  },
+  {
+    "code": "0920",
+    "name": "八堵",
+    "aliases": []
+  },
+  {
+    "code": "0930",
+    "name": "七堵",
+    "aliases": []
+  },
+  {
+    "code": "0940",
+    "name": "百福",
+    "aliases": []
+  },
+  {
+    "code": "0950",
+    "name": "五堵",
+    "aliases": []
+  },
+  {
+    "code": "0960",
+    "name": "汐止",
+    "aliases": []
+  },
+  {
+    "code": "0970",
+    "name": "汐科",
+    "aliases": []
+  },
+  {
+    "code": "0980",
+    "name": "南港",
+    "aliases": []
+  },
+  {
+    "code": "0990",
+    "name": "松山",
     "aliases": []
   },
   {
@@ -17,11 +57,570 @@
     ]
   },
   {
+    "code": "1001",
+    "name": "臺北-環島",
+    "aliases": [
+      "台北-環島"
+    ]
+  },
+  {
+    "code": "1010",
+    "name": "萬華",
+    "aliases": []
+  },
+  {
+    "code": "1020",
+    "name": "板橋",
+    "aliases": []
+  },
+  {
+    "code": "1030",
+    "name": "浮洲",
+    "aliases": []
+  },
+  {
+    "code": "1040",
+    "name": "樹林",
+    "aliases": []
+  },
+  {
+    "code": "1050",
+    "name": "南樹林",
+    "aliases": []
+  },
+  {
+    "code": "1060",
+    "name": "山佳",
+    "aliases": []
+  },
+  {
+    "code": "1070",
+    "name": "鶯歌",
+    "aliases": []
+  },
+  {
+    "code": "1075",
+    "name": "鳳鳴",
+    "aliases": []
+  },
+  {
+    "code": "1080",
+    "name": "桃園",
+    "aliases": []
+  },
+  {
+    "code": "1090",
+    "name": "內壢",
+    "aliases": []
+  },
+  {
+    "code": "1100",
+    "name": "中壢",
+    "aliases": []
+  },
+  {
+    "code": "1110",
+    "name": "埔心",
+    "aliases": []
+  },
+  {
+    "code": "1120",
+    "name": "楊梅",
+    "aliases": []
+  },
+  {
+    "code": "1130",
+    "name": "富岡",
+    "aliases": []
+  },
+  {
+    "code": "1140",
+    "name": "新富",
+    "aliases": []
+  },
+  {
+    "code": "1150",
+    "name": "北湖",
+    "aliases": []
+  },
+  {
+    "code": "1160",
+    "name": "湖口",
+    "aliases": []
+  },
+  {
+    "code": "1170",
+    "name": "新豐",
+    "aliases": []
+  },
+  {
+    "code": "1180",
+    "name": "竹北",
+    "aliases": []
+  },
+  {
+    "code": "1190",
+    "name": "北新竹",
+    "aliases": []
+  },
+  {
+    "code": "1191",
+    "name": "千甲",
+    "aliases": []
+  },
+  {
+    "code": "1192",
+    "name": "新莊",
+    "aliases": []
+  },
+  {
+    "code": "1193",
+    "name": "竹中",
+    "aliases": []
+  },
+  {
+    "code": "1194",
+    "name": "六家",
+    "aliases": []
+  },
+  {
+    "code": "1201",
+    "name": "上員",
+    "aliases": []
+  },
+  {
+    "code": "1202",
+    "name": "榮華",
+    "aliases": []
+  },
+  {
+    "code": "1203",
+    "name": "竹東",
+    "aliases": []
+  },
+  {
+    "code": "1204",
+    "name": "橫山",
+    "aliases": []
+  },
+  {
+    "code": "1205",
+    "name": "九讚頭",
+    "aliases": []
+  },
+  {
+    "code": "1206",
+    "name": "合興",
+    "aliases": []
+  },
+  {
+    "code": "1207",
+    "name": "富貴",
+    "aliases": []
+  },
+  {
+    "code": "1208",
+    "name": "內灣",
+    "aliases": []
+  },
+  {
+    "code": "1210",
+    "name": "新竹",
+    "aliases": []
+  },
+  {
+    "code": "1220",
+    "name": "三姓橋",
+    "aliases": []
+  },
+  {
+    "code": "1230",
+    "name": "香山",
+    "aliases": []
+  },
+  {
+    "code": "1240",
+    "name": "崎頂",
+    "aliases": []
+  },
+  {
+    "code": "1250",
+    "name": "竹南",
+    "aliases": []
+  },
+  {
+    "code": "1998",
+    "name": "樹林調車場",
+    "aliases": []
+  },
+  {
+    "code": "2110",
+    "name": "談文",
+    "aliases": []
+  },
+  {
+    "code": "2120",
+    "name": "大山",
+    "aliases": []
+  },
+  {
+    "code": "2130",
+    "name": "後龍",
+    "aliases": []
+  },
+  {
+    "code": "2140",
+    "name": "龍港",
+    "aliases": []
+  },
+  {
+    "code": "2150",
+    "name": "白沙屯",
+    "aliases": []
+  },
+  {
+    "code": "2160",
+    "name": "新埔",
+    "aliases": []
+  },
+  {
+    "code": "2170",
+    "name": "通霄",
+    "aliases": []
+  },
+  {
+    "code": "2180",
+    "name": "苑裡",
+    "aliases": []
+  },
+  {
+    "code": "2190",
+    "name": "日南",
+    "aliases": []
+  },
+  {
+    "code": "2200",
+    "name": "大甲",
+    "aliases": []
+  },
+  {
+    "code": "2210",
+    "name": "臺中港",
+    "aliases": [
+      "台中港"
+    ]
+  },
+  {
+    "code": "2220",
+    "name": "清水",
+    "aliases": []
+  },
+  {
+    "code": "2230",
+    "name": "沙鹿",
+    "aliases": []
+  },
+  {
+    "code": "2240",
+    "name": "龍井",
+    "aliases": []
+  },
+  {
+    "code": "2250",
+    "name": "大肚",
+    "aliases": []
+  },
+  {
+    "code": "2260",
+    "name": "追分",
+    "aliases": []
+  },
+  {
+    "code": "3140",
+    "name": "造橋",
+    "aliases": []
+  },
+  {
+    "code": "3150",
+    "name": "豐富",
+    "aliases": []
+  },
+  {
+    "code": "3160",
+    "name": "苗栗",
+    "aliases": []
+  },
+  {
+    "code": "3170",
+    "name": "南勢",
+    "aliases": []
+  },
+  {
+    "code": "3180",
+    "name": "銅鑼",
+    "aliases": []
+  },
+  {
+    "code": "3190",
+    "name": "三義",
+    "aliases": []
+  },
+  {
+    "code": "3210",
+    "name": "泰安",
+    "aliases": []
+  },
+  {
+    "code": "3220",
+    "name": "后里",
+    "aliases": []
+  },
+  {
+    "code": "3230",
+    "name": "豐原",
+    "aliases": []
+  },
+  {
+    "code": "3240",
+    "name": "栗林",
+    "aliases": []
+  },
+  {
+    "code": "3250",
+    "name": "潭子",
+    "aliases": []
+  },
+  {
+    "code": "3260",
+    "name": "頭家厝",
+    "aliases": []
+  },
+  {
+    "code": "3270",
+    "name": "松竹",
+    "aliases": []
+  },
+  {
+    "code": "3280",
+    "name": "太原",
+    "aliases": []
+  },
+  {
+    "code": "3290",
+    "name": "精武",
+    "aliases": []
+  },
+  {
     "code": "3300",
     "name": "臺中",
     "aliases": [
       "台中"
     ]
+  },
+  {
+    "code": "3310",
+    "name": "五權",
+    "aliases": []
+  },
+  {
+    "code": "3320",
+    "name": "大慶",
+    "aliases": []
+  },
+  {
+    "code": "3330",
+    "name": "烏日",
+    "aliases": []
+  },
+  {
+    "code": "3340",
+    "name": "新烏日",
+    "aliases": []
+  },
+  {
+    "code": "3350",
+    "name": "成功",
+    "aliases": []
+  },
+  {
+    "code": "3360",
+    "name": "彰化",
+    "aliases": []
+  },
+  {
+    "code": "3370",
+    "name": "花壇",
+    "aliases": []
+  },
+  {
+    "code": "3380",
+    "name": "大村",
+    "aliases": []
+  },
+  {
+    "code": "3390",
+    "name": "員林",
+    "aliases": []
+  },
+  {
+    "code": "3400",
+    "name": "永靖",
+    "aliases": []
+  },
+  {
+    "code": "3410",
+    "name": "社頭",
+    "aliases": []
+  },
+  {
+    "code": "3420",
+    "name": "田中",
+    "aliases": []
+  },
+  {
+    "code": "3430",
+    "name": "二水",
+    "aliases": []
+  },
+  {
+    "code": "3431",
+    "name": "源泉",
+    "aliases": []
+  },
+  {
+    "code": "3432",
+    "name": "濁水",
+    "aliases": []
+  },
+  {
+    "code": "3433",
+    "name": "龍泉",
+    "aliases": []
+  },
+  {
+    "code": "3434",
+    "name": "集集",
+    "aliases": []
+  },
+  {
+    "code": "3435",
+    "name": "水里",
+    "aliases": []
+  },
+  {
+    "code": "3436",
+    "name": "車埕",
+    "aliases": []
+  },
+  {
+    "code": "3450",
+    "name": "林內",
+    "aliases": []
+  },
+  {
+    "code": "3460",
+    "name": "石榴",
+    "aliases": []
+  },
+  {
+    "code": "3470",
+    "name": "斗六",
+    "aliases": []
+  },
+  {
+    "code": "3480",
+    "name": "斗南",
+    "aliases": []
+  },
+  {
+    "code": "3490",
+    "name": "石龜",
+    "aliases": []
+  },
+  {
+    "code": "4050",
+    "name": "大林",
+    "aliases": []
+  },
+  {
+    "code": "4060",
+    "name": "民雄",
+    "aliases": []
+  },
+  {
+    "code": "4070",
+    "name": "嘉北",
+    "aliases": []
+  },
+  {
+    "code": "4080",
+    "name": "嘉義",
+    "aliases": []
+  },
+  {
+    "code": "4090",
+    "name": "水上",
+    "aliases": []
+  },
+  {
+    "code": "4100",
+    "name": "南靖",
+    "aliases": []
+  },
+  {
+    "code": "4110",
+    "name": "後壁",
+    "aliases": []
+  },
+  {
+    "code": "4120",
+    "name": "新營",
+    "aliases": []
+  },
+  {
+    "code": "4130",
+    "name": "柳營",
+    "aliases": []
+  },
+  {
+    "code": "4140",
+    "name": "林鳳營",
+    "aliases": []
+  },
+  {
+    "code": "4150",
+    "name": "隆田",
+    "aliases": []
+  },
+  {
+    "code": "4160",
+    "name": "拔林",
+    "aliases": []
+  },
+  {
+    "code": "4170",
+    "name": "善化",
+    "aliases": []
+  },
+  {
+    "code": "4180",
+    "name": "南科",
+    "aliases": []
+  },
+  {
+    "code": "4190",
+    "name": "新市",
+    "aliases": []
+  },
+  {
+    "code": "4200",
+    "name": "永康",
+    "aliases": []
+  },
+  {
+    "code": "4210",
+    "name": "大橋",
+    "aliases": []
   },
   {
     "code": "4220",
@@ -31,8 +630,610 @@
     ]
   },
   {
+    "code": "4250",
+    "name": "保安",
+    "aliases": []
+  },
+  {
+    "code": "4260",
+    "name": "仁德",
+    "aliases": []
+  },
+  {
+    "code": "4270",
+    "name": "中洲",
+    "aliases": []
+  },
+  {
+    "code": "4271",
+    "name": "長榮大學",
+    "aliases": []
+  },
+  {
+    "code": "4272",
+    "name": "沙崙",
+    "aliases": []
+  },
+  {
+    "code": "4290",
+    "name": "大湖",
+    "aliases": []
+  },
+  {
+    "code": "4300",
+    "name": "路竹",
+    "aliases": []
+  },
+  {
+    "code": "4310",
+    "name": "岡山",
+    "aliases": []
+  },
+  {
+    "code": "4320",
+    "name": "橋頭",
+    "aliases": []
+  },
+  {
+    "code": "4330",
+    "name": "楠梓",
+    "aliases": []
+  },
+  {
+    "code": "4340",
+    "name": "新左營",
+    "aliases": []
+  },
+  {
+    "code": "4350",
+    "name": "左營",
+    "aliases": []
+  },
+  {
+    "code": "4360",
+    "name": "內惟",
+    "aliases": []
+  },
+  {
+    "code": "4370",
+    "name": "美術館",
+    "aliases": []
+  },
+  {
+    "code": "4380",
+    "name": "鼓山",
+    "aliases": []
+  },
+  {
+    "code": "4390",
+    "name": "三塊厝",
+    "aliases": []
+  },
+  {
     "code": "4400",
     "name": "高雄",
+    "aliases": []
+  },
+  {
+    "code": "4410",
+    "name": "民族",
+    "aliases": []
+  },
+  {
+    "code": "4420",
+    "name": "科工館",
+    "aliases": []
+  },
+  {
+    "code": "4430",
+    "name": "正義",
+    "aliases": []
+  },
+  {
+    "code": "4440",
+    "name": "鳳山",
+    "aliases": []
+  },
+  {
+    "code": "4450",
+    "name": "後庄",
+    "aliases": []
+  },
+  {
+    "code": "4460",
+    "name": "九曲堂",
+    "aliases": []
+  },
+  {
+    "code": "4470",
+    "name": "六塊厝",
+    "aliases": []
+  },
+  {
+    "code": "5000",
+    "name": "屏東",
+    "aliases": []
+  },
+  {
+    "code": "5010",
+    "name": "歸來",
+    "aliases": []
+  },
+  {
+    "code": "5020",
+    "name": "麟洛",
+    "aliases": []
+  },
+  {
+    "code": "5030",
+    "name": "西勢",
+    "aliases": []
+  },
+  {
+    "code": "5040",
+    "name": "竹田",
+    "aliases": []
+  },
+  {
+    "code": "5050",
+    "name": "潮州",
+    "aliases": []
+  },
+  {
+    "code": "5060",
+    "name": "崁頂",
+    "aliases": []
+  },
+  {
+    "code": "5070",
+    "name": "南州",
+    "aliases": []
+  },
+  {
+    "code": "5080",
+    "name": "鎮安",
+    "aliases": []
+  },
+  {
+    "code": "5090",
+    "name": "林邊",
+    "aliases": []
+  },
+  {
+    "code": "5100",
+    "name": "佳冬",
+    "aliases": []
+  },
+  {
+    "code": "5110",
+    "name": "東海",
+    "aliases": []
+  },
+  {
+    "code": "5120",
+    "name": "枋寮",
+    "aliases": []
+  },
+  {
+    "code": "5130",
+    "name": "加祿",
+    "aliases": []
+  },
+  {
+    "code": "5140",
+    "name": "內獅",
+    "aliases": []
+  },
+  {
+    "code": "5160",
+    "name": "枋山",
+    "aliases": []
+  },
+  {
+    "code": "5170",
+    "name": "枋野",
+    "aliases": []
+  },
+  {
+    "code": "5190",
+    "name": "大武",
+    "aliases": []
+  },
+  {
+    "code": "5200",
+    "name": "瀧溪",
+    "aliases": []
+  },
+  {
+    "code": "5210",
+    "name": "金崙",
+    "aliases": []
+  },
+  {
+    "code": "5220",
+    "name": "太麻里",
+    "aliases": []
+  },
+  {
+    "code": "5230",
+    "name": "知本",
+    "aliases": []
+  },
+  {
+    "code": "5240",
+    "name": "康樂",
+    "aliases": []
+  },
+  {
+    "code": "5998",
+    "name": "南方小站",
+    "aliases": []
+  },
+  {
+    "code": "5999",
+    "name": "潮州基地",
+    "aliases": []
+  },
+  {
+    "code": "6000",
+    "name": "臺東",
+    "aliases": [
+      "台東"
+    ]
+  },
+  {
+    "code": "6010",
+    "name": "山里",
+    "aliases": []
+  },
+  {
+    "code": "6020",
+    "name": "鹿野",
+    "aliases": []
+  },
+  {
+    "code": "6030",
+    "name": "瑞源",
+    "aliases": []
+  },
+  {
+    "code": "6040",
+    "name": "瑞和",
+    "aliases": []
+  },
+  {
+    "code": "6050",
+    "name": "關山",
+    "aliases": []
+  },
+  {
+    "code": "6060",
+    "name": "海端",
+    "aliases": []
+  },
+  {
+    "code": "6070",
+    "name": "池上",
+    "aliases": []
+  },
+  {
+    "code": "6080",
+    "name": "富里",
+    "aliases": []
+  },
+  {
+    "code": "6090",
+    "name": "東竹",
+    "aliases": []
+  },
+  {
+    "code": "6100",
+    "name": "東里",
+    "aliases": []
+  },
+  {
+    "code": "6110",
+    "name": "玉里",
+    "aliases": []
+  },
+  {
+    "code": "6120",
+    "name": "三民",
+    "aliases": []
+  },
+  {
+    "code": "6130",
+    "name": "瑞穗",
+    "aliases": []
+  },
+  {
+    "code": "6140",
+    "name": "富源",
+    "aliases": []
+  },
+  {
+    "code": "6150",
+    "name": "大富",
+    "aliases": []
+  },
+  {
+    "code": "6160",
+    "name": "光復",
+    "aliases": []
+  },
+  {
+    "code": "6170",
+    "name": "萬榮",
+    "aliases": []
+  },
+  {
+    "code": "6180",
+    "name": "鳳林",
+    "aliases": []
+  },
+  {
+    "code": "6190",
+    "name": "南平",
+    "aliases": []
+  },
+  {
+    "code": "6200",
+    "name": "林榮新光",
+    "aliases": []
+  },
+  {
+    "code": "6210",
+    "name": "豐田",
+    "aliases": []
+  },
+  {
+    "code": "6220",
+    "name": "壽豐",
+    "aliases": []
+  },
+  {
+    "code": "6230",
+    "name": "平和",
+    "aliases": []
+  },
+  {
+    "code": "6240",
+    "name": "志學",
+    "aliases": []
+  },
+  {
+    "code": "6250",
+    "name": "吉安",
+    "aliases": []
+  },
+  {
+    "code": "7000",
+    "name": "花蓮",
+    "aliases": []
+  },
+  {
+    "code": "7010",
+    "name": "北埔",
+    "aliases": []
+  },
+  {
+    "code": "7020",
+    "name": "景美",
+    "aliases": []
+  },
+  {
+    "code": "7030",
+    "name": "新城",
+    "aliases": []
+  },
+  {
+    "code": "7040",
+    "name": "崇德",
+    "aliases": []
+  },
+  {
+    "code": "7050",
+    "name": "和仁",
+    "aliases": []
+  },
+  {
+    "code": "7060",
+    "name": "和平",
+    "aliases": []
+  },
+  {
+    "code": "7070",
+    "name": "漢本",
+    "aliases": []
+  },
+  {
+    "code": "7080",
+    "name": "武塔",
+    "aliases": []
+  },
+  {
+    "code": "7090",
+    "name": "南澳",
+    "aliases": []
+  },
+  {
+    "code": "7100",
+    "name": "東澳",
+    "aliases": []
+  },
+  {
+    "code": "7110",
+    "name": "永樂",
+    "aliases": []
+  },
+  {
+    "code": "7120",
+    "name": "蘇澳",
+    "aliases": []
+  },
+  {
+    "code": "7130",
+    "name": "蘇澳新",
+    "aliases": []
+  },
+  {
+    "code": "7140",
+    "name": "新馬",
+    "aliases": []
+  },
+  {
+    "code": "7150",
+    "name": "冬山",
+    "aliases": []
+  },
+  {
+    "code": "7160",
+    "name": "羅東",
+    "aliases": []
+  },
+  {
+    "code": "7170",
+    "name": "中里",
+    "aliases": []
+  },
+  {
+    "code": "7180",
+    "name": "二結",
+    "aliases": []
+  },
+  {
+    "code": "7190",
+    "name": "宜蘭",
+    "aliases": []
+  },
+  {
+    "code": "7200",
+    "name": "四城",
+    "aliases": []
+  },
+  {
+    "code": "7210",
+    "name": "礁溪",
+    "aliases": []
+  },
+  {
+    "code": "7220",
+    "name": "頂埔",
+    "aliases": []
+  },
+  {
+    "code": "7230",
+    "name": "頭城",
+    "aliases": []
+  },
+  {
+    "code": "7240",
+    "name": "外澳",
+    "aliases": []
+  },
+  {
+    "code": "7250",
+    "name": "龜山",
+    "aliases": []
+  },
+  {
+    "code": "7260",
+    "name": "大溪",
+    "aliases": []
+  },
+  {
+    "code": "7270",
+    "name": "大里",
+    "aliases": []
+  },
+  {
+    "code": "7280",
+    "name": "石城",
+    "aliases": []
+  },
+  {
+    "code": "7290",
+    "name": "福隆",
+    "aliases": []
+  },
+  {
+    "code": "7300",
+    "name": "貢寮",
+    "aliases": []
+  },
+  {
+    "code": "7310",
+    "name": "雙溪",
+    "aliases": []
+  },
+  {
+    "code": "7320",
+    "name": "牡丹",
+    "aliases": []
+  },
+  {
+    "code": "7330",
+    "name": "三貂嶺",
+    "aliases": []
+  },
+  {
+    "code": "7331",
+    "name": "大華",
+    "aliases": []
+  },
+  {
+    "code": "7332",
+    "name": "十分",
+    "aliases": []
+  },
+  {
+    "code": "7333",
+    "name": "望古",
+    "aliases": []
+  },
+  {
+    "code": "7334",
+    "name": "嶺腳",
+    "aliases": []
+  },
+  {
+    "code": "7335",
+    "name": "平溪",
+    "aliases": []
+  },
+  {
+    "code": "7336",
+    "name": "菁桐",
+    "aliases": []
+  },
+  {
+    "code": "7350",
+    "name": "猴硐",
+    "aliases": []
+  },
+  {
+    "code": "7360",
+    "name": "瑞芳",
+    "aliases": []
+  },
+  {
+    "code": "7361",
+    "name": "海科館",
+    "aliases": []
+  },
+  {
+    "code": "7362",
+    "name": "八斗子",
+    "aliases": []
+  },
+  {
+    "code": "7380",
+    "name": "四腳亭",
+    "aliases": []
+  },
+  {
+    "code": "7390",
+    "name": "暖暖",
     "aliases": []
   }
 ]
