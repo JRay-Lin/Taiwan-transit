@@ -5,7 +5,7 @@ Use `taiwan-transit hsr` for Taiwan High Speed Rail timetable lookup.
 ## CLI
 
 ```bash
-./skills/taiwan-transit/scripts/taiwan-transit hsr --from 台北 --to 台中 --date 2026/08/08 --time 08:00 --json
+./skills/taiwan-transit/scripts/taiwan-transit hsr --from 台北 --to 台中 --date 2025/01/15 --time 08:00 --json
 ./skills/taiwan-transit/scripts/taiwan-transit hsr --from 台北 --to 台中
 ```
 

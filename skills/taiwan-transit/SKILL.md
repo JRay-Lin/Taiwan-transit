@@ -14,8 +14,8 @@ Use the repository CLI to query Taiwan rail timetables. Prefer one integrated en
 Run commands from the repository root:
 
 ```bash
-./skills/taiwan-transit/scripts/taiwan-transit hsr --from 台北 --to 台中 --date 2026/08/08 --time 08:00
-./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐 --date 2026/08/08 --time 06:00
+./skills/taiwan-transit/scripts/taiwan-transit hsr --from 台北 --to 台中 --date 2025/01/15 --time 08:00
+./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐 --date 2025/01/15 --time 06:00
 ./skills/taiwan-transit/scripts/taiwan-transit update
 ```
 

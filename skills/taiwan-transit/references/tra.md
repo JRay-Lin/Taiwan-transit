@@ -5,7 +5,7 @@ Use `taiwan-transit tra` for Taiwan Railway timetable lookup.
 ## CLI
 
 ```bash
-./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐 --date 2026/08/08 --time 06:00 --json
+./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐 --date 2025/01/15 --time 06:00 --json
 ./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐
 ./skills/taiwan-transit/scripts/taiwan-transit update
 ```
