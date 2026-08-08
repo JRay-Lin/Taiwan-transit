@@ -133,13 +133,9 @@ def parse_itineraries(response_html: str, origin: str, destination: str) -> list
     rows = TRIP_ROW_RE.findall(response_html)
     itineraries: list[dict[str, object]] = []
     for row in rows:
-        train_number = _extract_cell(row, "train-number")
+        train_type, train_number, departure_time, arrival_time, duration = _extract_trip_fields(row)
         if not train_number:
             continue
-        train_type = _extract_cell(row, "train-type")
-        departure_time = _extract_cell(row, "departure")
-        arrival_time = _extract_cell(row, "arrival")
-        duration = _extract_cell(row, "duration")
         itineraries.append(
             {
                 "train_number": train_number,
@@ -168,6 +164,54 @@ def parse_itineraries(response_html: str, origin: str, destination: str) -> list
             }
         )
     return itineraries
+
+
+def _extract_trip_fields(row_html: str) -> tuple[str, str, str, str, str]:
+    train_number = _extract_cell(row_html, "train-number")
+    if train_number:
+        return (
+            _extract_cell(row_html, "train-type"),
+            train_number,
+            _extract_cell(row_html, "departure"),
+            _extract_cell(row_html, "arrival"),
+            _extract_cell(row_html, "duration"),
+        )
+
+    train_text = _extract_element_text(row_html, "ul", "train-number")
+    match = re.search(r"(?P<type>[^\s()]+)\s+(?P<number>\d+[A-Za-z]?)\b", train_text)
+    if match is None:
+        return "", "", "", "", ""
+    cells = _extract_cells(row_html)
+    if len(cells) < 4:
+        return "", "", "", "", ""
+    return (
+        match.group("type").strip(),
+        match.group("number"),
+        cells[1],
+        cells[2],
+        cells[3],
+    )
+
+
+def _extract_element_text(row_html: str, tag: str, class_name: str) -> str:
+    pattern = re.compile(
+        rf'<{tag}[^>]+class=["\'][^"\']*{re.escape(class_name)}[^"\']*["\'][^>]*>(.*?)</{tag}>',
+        re.I | re.S,
+    )
+    match = pattern.search(row_html)
+    return _text_content(match.group(1)) if match else ""
+
+
+def _extract_cells(row_html: str) -> list[str]:
+    return [
+        _text_content(cell)
+        for cell in re.findall(r"<td\b[^>]*>(.*?)</td>", row_html, re.I | re.S)
+    ]
+
+
+def _text_content(fragment: str) -> str:
+    text = re.sub(r"<[^>]+>", " ", fragment)
+    return " ".join(html.unescape(text).split())
 
 
 def _extract_cell(row_html: str, class_name: str) -> str:

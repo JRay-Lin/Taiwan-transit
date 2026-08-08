@@ -12,7 +12,7 @@ from urllib.parse import parse_qs
 SKILL_ROOT = Path(__file__).resolve().parents[1] / "skills" / "taiwan-transit"
 sys.path.insert(0, str(SKILL_ROOT))
 
-from scripts import cli
+from scripts import cli, tra
 
 
 class FakeResponse:
@@ -348,6 +348,32 @@ class TaiwanTransitCliTests(unittest.TestCase):
             self.assertEqual(form["rideDate"], ["2026/08/08"])
             self.assertEqual(form["startTime"], ["07:05"])
             self.assertEqual(form["endTime"], ["23:59"])
+
+    def test_tra_parser_extracts_current_official_row_layout(self):
+        response_html = """
+        <table class="itinerary-controls">
+          <tr class="trip-column">
+            <td>
+              <ul class="train-number">
+                <li><a class="links">自強 152</a> <span>(潮州 → 汐止)</span></li>
+              </ul>
+            </td>
+            <td>00:05</td>
+            <td>00:12</td>
+            <td>7 分</td>
+            <td>山線</td>
+          </tr>
+        </table>
+        """
+
+        results = tra.parse_itineraries(response_html, "臺北", "松山")
+
+        self.assertEqual(len(results), 1)
+        self.assertEqual(results[0]["train_type"], "自強")
+        self.assertEqual(results[0]["train_number"], "152")
+        self.assertEqual(results[0]["departure_time"], "00:05")
+        self.assertEqual(results[0]["arrival_time"], "00:12")
+        self.assertEqual(results[0]["duration"], "7 分")
 
     def test_hsr_filters_by_requested_date_and_time(self):
         response = {
