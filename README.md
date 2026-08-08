@@ -8,9 +8,11 @@ Run from the repository root:
 
 ```bash
 ./skills/taiwan-transit/scripts/taiwan-transit hsr --from 台北 --to 台中 --date 2026/08/08 --time 08:00
-./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐 --date 2026/08/08 --start-time 06:00 --end-time 09:00
+./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐 --date 2026/08/08 --time 06:00
 ./skills/taiwan-transit/scripts/taiwan-transit update
 ```
+
+For `hsr` and `tra`, `--date` defaults to today in GMT+8 and `--time` defaults to the request-time clock in GMT+8.
 
 Use `--json` for structured output:
 

@@ -4,6 +4,7 @@ import sys
 import tempfile
 import unittest
 from contextlib import redirect_stderr
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.error import URLError
 from urllib.parse import parse_qs
@@ -71,6 +72,34 @@ def write_tra_cache(directory, stations):
 
 
 class TaiwanTransitCliTests(unittest.TestCase):
+    def test_reference_docs_define_cli_parameters(self):
+        expectations = {
+            "hsr.md": [
+                "## Parameters",
+                "| `--from` | Yes | None |",
+                "| `--to` | Yes | None |",
+                "| `--date` | No | Today in GMT+8 |",
+                "| `--time` | No | Current time in GMT+8 |",
+                "| `--json` | No | `false` |",
+            ],
+            "tra.md": [
+                "## Parameters",
+                "| `--from` | Yes | None |",
+                "| `--to` | Yes | None |",
+                "| `--date` | No | Today in GMT+8 |",
+                "| `--time` | No | Current time in GMT+8 |",
+                "| `--direct-only` | No | `false` |",
+                "| `--cache` | No | `scripts/data/tra_stations.json` |",
+                "| `--json` | No | `false` |",
+            ],
+        }
+
+        for filename, snippets in expectations.items():
+            content = (SKILL_ROOT / "references" / filename).read_text(encoding="utf-8")
+            for snippet in snippets:
+                with self.subTest(filename=filename, snippet=snippet):
+                    self.assertIn(snippet, content)
+
     def test_default_tra_cache_lives_under_scripts_data(self):
         expected = SKILL_ROOT / "scripts" / "data" / "tra_stations.json"
 
@@ -147,10 +176,21 @@ class TaiwanTransitCliTests(unittest.TestCase):
                 "六家",
                 "--to",
                 "新豐",
-                "--date",
-                "2026/08/08",
                 "--insecure",
             ],
+        ]
+
+        for command in commands:
+            with self.subTest(command=command), redirect_stderr(io.StringIO()):
+                with self.assertRaises(SystemExit) as raised:
+                    parser.parse_args(command)
+                self.assertEqual(raised.exception.code, 2)
+
+    def test_tra_cli_rejects_removed_time_window_options(self):
+        parser = cli._build_parser()
+        commands = [
+            ["tra", "--from", "六家", "--to", "新豐", "--start-time", "06:00"],
+            ["tra", "--from", "六家", "--to", "新豐", "--end-time", "09:00"],
         ]
 
         for command in commands:
@@ -182,8 +222,8 @@ class TaiwanTransitCliTests(unittest.TestCase):
                     "六家",
                     "--to",
                     "新豐",
-                    "--date",
-                    "2026/08/08",
+                    "--time",
+                    "06:00",
                     "--cache",
                     str(cache_path),
                     "--json",
@@ -235,10 +275,8 @@ class TaiwanTransitCliTests(unittest.TestCase):
                     "新豐",
                     "--date",
                     "2026/08/08",
-                    "--start-time",
+                    "--time",
                     "06:00",
-                    "--end-time",
-                    "09:00",
                     "--cache",
                     str(cache_path),
                     "--json",
@@ -254,8 +292,62 @@ class TaiwanTransitCliTests(unittest.TestCase):
             self.assertEqual(form["endStation"], ["1170-新豐"])
             self.assertEqual(form["transfer"], ["ONE"])
             self.assertEqual(form["rideDate"], ["2026/08/08"])
+            self.assertEqual(form["startTime"], ["06:00"])
+            self.assertEqual(form["endTime"], ["23:59"])
             payload = json.loads(out.getvalue())
             self.assertEqual(payload["results"][0]["train_number"], "1701")
+
+    def test_tra_query_defaults_date_and_time_from_taiwan_now(self):
+        with tempfile.TemporaryDirectory() as tmpdir:
+            cache_path = write_tra_cache(
+                tmpdir,
+                [
+                    {"code": "1194", "name": "六家", "aliases": []},
+                    {"code": "1170", "name": "新豐", "aliases": []},
+                ],
+            )
+            opener = FakeOpener(
+                [
+                    FakeResponse('<input value="csrf-token" name="_csrf">'),
+                    FakeResponse(
+                        """
+                        <table class="itinerary-controls">
+                          <caption>建議搭乘車次</caption>
+                          <tr class="trip-column">
+                            <td class="train-number">1701</td>
+                            <td class="train-type">區間</td>
+                            <td class="departure">07:10</td>
+                            <td class="arrival">07:52</td>
+                            <td class="duration">00:42</td>
+                          </tr>
+                        </table>
+                        """
+                    ),
+                ]
+            )
+            out = io.StringIO()
+
+            exit_code = cli.main(
+                [
+                    "tra",
+                    "--from",
+                    "六家",
+                    "--to",
+                    "新豐",
+                    "--cache",
+                    str(cache_path),
+                    "--json",
+                ],
+                opener=opener,
+                stdout=out,
+                now=datetime(2026, 8, 7, 23, 5, tzinfo=timezone.utc),
+            )
+
+            self.assertEqual(exit_code, 0)
+            form = opener.posted_forms[0]
+            self.assertEqual(form["rideDate"], ["2026/08/08"])
+            self.assertEqual(form["startTime"], ["07:05"])
+            self.assertEqual(form["endTime"], ["23:59"])
 
     def test_hsr_filters_by_requested_date_and_time(self):
         response = {
@@ -315,6 +407,47 @@ class TaiwanTransitCliTests(unittest.TestCase):
         self.assertEqual(form["OutWardSearchDate"], ["2026/08/08"])
         payload = json.loads(out.getvalue())
         self.assertEqual([item["train_number"] for item in payload["results"]], ["0801"])
+
+    def test_hsr_query_defaults_date_and_time_from_taiwan_now(self):
+        response = {
+            "success": True,
+            "data": {
+                "DepartureTable": {
+                    "TrainItem": [
+                        {
+                            "TrainNumber": "0701",
+                            "DepartureDate": "08/08",
+                            "DepartureTime": "07:10",
+                            "DestinationTime": "08:00",
+                            "Duration": "00:50",
+                        }
+                    ]
+                }
+            },
+        }
+        opener = FakeOpener([FakeResponse(json.dumps(response))])
+        out = io.StringIO()
+
+        exit_code = cli.main(
+            [
+                "hsr",
+                "--from",
+                "台北",
+                "--to",
+                "台中",
+                "--json",
+            ],
+            opener=opener,
+            stdout=out,
+            now=datetime(2026, 8, 7, 23, 5, tzinfo=timezone.utc),
+        )
+
+        self.assertEqual(exit_code, 0)
+        form = opener.posted_forms[0]
+        self.assertEqual(form["OutWardSearchDate"], ["2026/08/08"])
+        self.assertEqual(form["OutWardSearchTime"], ["07:05"])
+        payload = json.loads(out.getvalue())
+        self.assertEqual(payload["results"][0]["train_number"], "0701")
 
 
 if __name__ == "__main__":

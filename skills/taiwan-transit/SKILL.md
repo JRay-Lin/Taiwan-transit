@@ -15,11 +15,11 @@ Run commands from the repository root:
 
 ```bash
 ./skills/taiwan-transit/scripts/taiwan-transit hsr --from 台北 --to 台中 --date 2026/08/08 --time 08:00
-./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐 --date 2026/08/08 --start-time 06:00 --end-time 09:00
+./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐 --date 2026/08/08 --time 06:00
 ./skills/taiwan-transit/scripts/taiwan-transit update
 ```
 
-Use `cd skills/taiwan-transit && python3 -m scripts ...` if the executable wrapper is unavailable. Add `--json` when another tool or agent needs structured output.
+Use `cd skills/taiwan-transit && python3 -m scripts ...` if the executable wrapper is unavailable. Add `--json` when another tool or agent needs structured output. For `hsr` and `tra`, omit `--date` to use today in GMT+8 and omit `--time` to use the request-time clock in GMT+8.
 
 ## Command Selection
 
