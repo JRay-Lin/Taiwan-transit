@@ -5,10 +5,13 @@ Use `taiwan-transit tra` for Taiwan Railway timetable lookup.
 ## CLI
 
 ```bash
-./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐 --date 2025/01/15 --time 06:00 --json
-./skills/taiwan-transit/scripts/taiwan-transit tra --from 六家 --to 新豐
-./skills/taiwan-transit/scripts/taiwan-transit update
+cd skills/taiwan-transit
+python3 -m scripts tra --from 六家 --to 新豐 --date 2025/01/15 --time 06:00 --json
+python3 -m scripts tra --from 六家 --to 新豐
+python3 -m scripts update
 ```
+
+Use `python3 -m scripts ...`; this repository does not provide an executable wrapper.
 
 ## Parameters
 
